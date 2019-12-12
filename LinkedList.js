@@ -10,59 +10,59 @@ class LinkedList {
     this.head = null;
   }
   //methods: insertFirst(value), insertLast(value), insert(node1, node2), find(value)
-  insertFirst(value){
+  insertFirst(value) {
     this.head = new Node(value, this.head);
   }
-  insertLast(value){
-    if (this.head === null){
+  insertLast(value) {
+    if (this.head === null) {
       this.insertFirst(value);
     } else {
       let last = this.head;
-      while(last.next !== null){
+      while (last.next !== null) {
         last = last.next;
       }
-      last.next = new Node(value, null);  
+      last.next = new Node(value, null);
     }
   }
-  insertAfter(value, insertion){
+  insertAfter(value, insertion) {
     let currNode = this.find(insertion);
     let afterNode = currNode.next;
     currNode.next = new Node(value, afterNode);
   }
-  insertBefore(value, insertion){
+  insertBefore(value, insertion) {
     let currNode = this.head;
     let tempNode = this.head;
-    while (currNode.value !== insertion){
+    while (currNode.value !== insertion) {
       tempNode = currNode;
       currNode = currNode.next;
     }
     tempNode.next = new Node(value, currNode);
   }
-  insertAt(value, index){
+  insertAt(value, index) {
     let currIndex = 0;
     let currNode = this.head;
-    while (currIndex !== (index-1)){
+    while (currIndex !== (index - 1)) {
       currNode = currNode.next;
       currIndex++;
     }
     currNode.next = new Node(value, currNode.next.next);
   }
-  find(item) { 
+  find(item) {
     let currNode = this.head;
     if (!this.head) {
       return null;
     }
     while (currNode.value !== item) {
       if (currNode.next === null) {
-          return null;
+        return null;
       }
       else {
-          currNode = currNode.next;
+        currNode = currNode.next;
       }
     }
     return currNode;
   }
-  remove(item){ 
+  remove(item) {
     // If the list is empty
     if (!this.head) {
       return null;
@@ -86,7 +86,7 @@ class LinkedList {
   display() {
     let currNode = this.head;
     let str = '';
-    while (currNode.next !== null){
+    while (currNode.next !== null) {
       str = str + currNode.value + ', ';
       currNode = currNode.next;
     }
@@ -96,7 +96,7 @@ class LinkedList {
   size() {
     let size = 0;
     let currNode = this.head;
-    while (currNode !== null){
+    while (currNode !== null) {
       size++;
       currNode = currNode.next;
     }
@@ -107,27 +107,27 @@ class LinkedList {
   }
   findPrevious(value) {
     let currNode = this.head;
-    if (currNode === null){
+    if (currNode === null) {
       return 'empty list';
     } else {
       let tempNode = currNode;
-      while (currNode.value !== value){
-        if (currNode.next === null){
+      while (currNode.value !== value) {
+        if (currNode.next === null) {
           return 'no such value';
         } else {
           tempNode = currNode;
-          currNode = currNode.next;  
+          currNode = currNode.next;
         }
       }
       return tempNode;
     }
   }
-  findLast(){
+  findLast() {
     let currNode = this.head;
-    if (currNode === null){
+    if (currNode === null) {
       return 'empty list';
     } else {
-      while (currNode.next !== null){
+      while (currNode.next !== null) {
         // if (currNode.next !== null){
         //   currNode = currNode.next;
         // }
@@ -136,9 +136,9 @@ class LinkedList {
       return currNode;
     }
   }
-  reverse(node){
+  reverse(node) {
     // let tempHead = node;
-    if(node.next !== null){
+    if (node.next !== null) {
       // console.log('before reverse', node.next.value);
       this.reverse(node.next);
       node.next.next = node;
@@ -155,44 +155,44 @@ class LinkedList {
       this.head = node;
     }
   }
-  itReverse(){
-    if (this.head === null){
+  itReverse() {
+    if (this.head === null) {
       return 'empty list';
     } else {
       let currNode = this.head;
       let nextNode = this.head.next;
       let nextNextNode = null;
       //a points to null
-      console.log(`currNode: ${currNode.value}, nextNode: ${nextNode.value}`)
+      console.log(`currNode: ${currNode.value}, nextNode: ${nextNode.value}`);
       currNode.next = null;
       console.log(`set tail next to ${currNode.next}`);
       console.log('\b');
-      while (nextNode !== null){
+      while (nextNode !== null) {
         //store c
-        console.log(`while nextNode has a value, nextNode: ${nextNode.value}`)
-        console.log(`currNode: ${currNode.value}, nextNode: ${nextNode.value}`)
+        console.log(`while nextNode has a value, nextNode: ${nextNode.value}`);
+        console.log(`currNode: ${currNode.value}, nextNode: ${nextNode.value}`);
         nextNextNode = nextNode.next;
-        if (nextNextNode === null){
-          console.log(`stored nextNextNode variable: ${nextNextNode}`)
+        if (nextNextNode === null) {
+          console.log(`stored nextNextNode variable: ${nextNextNode}`);
         } else {
-          console.log(`stored nextNextNode variable: ${nextNextNode.value}`)
+          console.log(`stored nextNextNode variable: ${nextNextNode.value}`);
         }
         //b points to a
         console.log('broke nextNode connection and set it back');
         nextNode.next = currNode;
-        console.log(`${nextNode.value} points to ${nextNode.next.value}`)
+        console.log(`${nextNode.value} points to ${nextNode.next.value}`);
         console.log('store currNode as nextNode (moving over one)');
         currNode = nextNode;
         console.log(`currNode = ${currNode.value}`);
         console.log('move nextNode over one node');
         nextNode = nextNextNode;
-        if (nextNode !== null){
+        if (nextNode !== null) {
           console.log(`nextNode = ${nextNode.value}`);
         } else {
           console.log(`nextNode = ${nextNode}`);
         }
-        if (nextNode !== null){
-          console.log(`if nextNode is not null, and therefore has something after it, nextNextNode is moved over one`)
+        if (nextNode !== null) {
+          console.log('if nextNode is not null, and therefore has something after it, nextNextNode is moved over one');
           nextNextNode = nextNode.next;
         } else {
           console.log('nextNode is null, we have hit the tail, set the tail to be the head');
@@ -236,6 +236,59 @@ class LinkedList {
 
   */
 
+  thirdFromEnd() {
+    let currNode = this.head;
+
+
+    while (currNode.next.next.next !== null) {
+      currNode = currNode.next;
+    }
+    return currNode;
+  }
+
+  middleOfList() {
+    let currNode = this.head;
+    let indx1 = 0;
+    let indx2 = this.size();
+
+    if (indx2 % 2 === 0) {
+      indx2 = indx2 / 2 - 1;
+    }
+    else {
+      indx2 = Math.floor(indx2 / 2);
+    }
+    while (indx1 < indx2) {
+      currNode = currNode.next;
+      indx1++;
+    }
+    return currNode.value;
+  }
+
+  cycle(node) {
+    if (this.head === null) {
+      this.insertFirst(node.value);
+    } else {
+      let last = this.head;
+      while (last.next !== null) {
+        last = last.next;
+      }
+      last.next = node;
+    }
+  }
+
+  cycleList(){
+    let newObject = {};
+    let currHead = this.head;
+    while(currHead.next !== null){
+      if(newObject[currHead.value]){
+        return true;
+      }
+      newObject[currHead.value] = currHead.value;
+      currHead = currHead.next;
+    }
+    return false;
+  }
+
 }
 
 function main() {
@@ -269,23 +322,26 @@ function main() {
   // WhatDoesThisProgramDo(SLL);
   // SLL.display();
   // SLL.reverse(SLL.head);
-  SLL.itReverse();
+  // SLL.itReverse();
   SLL.display();
+  // console.log(SLL.thirdFromEnd());
+  // console.log(SLL.middleOfList());
+  console.log(SLL.cycleList());
 }
 
 function WhatDoesThisProgramDo(lst) {
   let current = lst.head;
   while (current !== null) {
-      let newNode = current;
-      while (newNode.next !== null) {
-          if (newNode.next.value === current.value) {
-              newNode.next = newNode.next.next;
-          }
-          else {
-              newNode = newNode.next;
-          }
+    let newNode = current;
+    while (newNode.next !== null) {
+      if (newNode.next.value === current.value) {
+        newNode.next = newNode.next.next;
       }
-      current = current.next;
+      else {
+        newNode = newNode.next;
+      }
+    }
+    current = current.next;
   }
 }
 
@@ -293,3 +349,18 @@ main();
 
 
 //4. This function is removing duplicate values from the list. 
+
+
+function main2() {
+  let cycleList = new LinkedList();
+  cycleList.insertLast('Apollo');
+  cycleList.insertLast('Boomer');
+  cycleList.insertLast('Helo');
+  cycleList.insertLast('Husker');
+  cycleList.insertLast('Starbuck');
+  cycleList.cycle(cycleList.find('Starbuck'));
+  console.log(cycleList.cycleList());
+}
+
+main2();
+
