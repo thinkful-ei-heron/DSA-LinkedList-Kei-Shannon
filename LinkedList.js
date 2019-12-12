@@ -155,6 +155,53 @@ class LinkedList {
       this.head = node;
     }
   }
+  itReverse(){
+    if (this.head === null){
+      return 'empty list';
+    } else {
+      let currNode = this.head;
+      let nextNode = this.head.next;
+      let nextNextNode = null;
+      //a points to null
+      console.log(`currNode: ${currNode.value}, nextNode: ${nextNode.value}`)
+      currNode.next = null;
+      console.log(`set tail next to ${currNode.next}`);
+      console.log('\b');
+      while (nextNode !== null){
+        //store c
+        console.log(`while nextNode has a value, nextNode: ${nextNode.value}`)
+        console.log(`currNode: ${currNode.value}, nextNode: ${nextNode.value}`)
+        nextNextNode = nextNode.next;
+        if (nextNextNode === null){
+          console.log(`stored nextNextNode variable: ${nextNextNode}`)
+        } else {
+          console.log(`stored nextNextNode variable: ${nextNextNode.value}`)
+        }
+        //b points to a
+        console.log('broke nextNode connection and set it back');
+        nextNode.next = currNode;
+        console.log(`${nextNode.value} points to ${nextNode.next.value}`)
+        console.log('store currNode as nextNode (moving over one)');
+        currNode = nextNode;
+        console.log(`currNode = ${currNode.value}`);
+        console.log('move nextNode over one node');
+        nextNode = nextNextNode;
+        if (nextNode !== null){
+          console.log(`nextNode = ${nextNode.value}`);
+        } else {
+          console.log(`nextNode = ${nextNode}`);
+        }
+        if (nextNode !== null){
+          console.log(`if nextNode is not null, and therefore has something after it, nextNextNode is moved over one`)
+          nextNextNode = nextNode.next;
+        } else {
+          console.log('nextNode is null, we have hit the tail, set the tail to be the head');
+          this.head = currNode;
+        }
+        console.log('\b');
+      }
+    }
+  }
 
   /*
   a > b > c > null 
@@ -221,7 +268,8 @@ function main() {
   // SLL.display();
   // WhatDoesThisProgramDo(SLL);
   // SLL.display();
-  SLL.reverse(SLL.head);
+  // SLL.reverse(SLL.head);
+  SLL.itReverse();
   SLL.display();
 }
 
