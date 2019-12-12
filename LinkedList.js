@@ -276,6 +276,7 @@ class LinkedList {
     }
   }
 
+  //will return true if the list is a cycle. Will return false if not a cycle.
   cycleList(){
     let newObject = {};
     let currHead = this.head;
