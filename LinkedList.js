@@ -191,10 +191,7 @@ class LinkedList {
         } else {
           console.log(`nextNode = ${nextNode}`);
         }
-        if (nextNode !== null){
-          console.log(`if nextNode is not null, and therefore has something after it, nextNextNode is moved over one`)
-          nextNextNode = nextNode.next;
-        } else {
+        if (nextNode === null){
           console.log('nextNode is null, we have hit the tail, set the tail to be the head');
           this.head = currNode;
         }
