@@ -328,7 +328,10 @@ function main() {
   // console.log(SLL.middleOfList());
   console.log(SLL.cycleList());
 }
+main();
 
+
+//4. This function is removing duplicate values from the list. 
 function WhatDoesThisProgramDo(lst) {
   let current = lst.head;
   while (current !== null) {
@@ -345,22 +348,17 @@ function WhatDoesThisProgramDo(lst) {
   }
 }
 
-main();
+// #8.
+// function main2() {
+//   let cycleList = new LinkedList();
+//   cycleList.insertLast('Apollo');
+//   cycleList.insertLast('Boomer');
+//   cycleList.insertLast('Helo');
+//   cycleList.insertLast('Husker');
+//   cycleList.insertLast('Starbuck');
+//   cycleList.cycle(cycleList.find('Starbuck'));
+//   console.log(cycleList.cycleList());
+// }
 
-
-//4. This function is removing duplicate values from the list. 
-
-
-function main2() {
-  let cycleList = new LinkedList();
-  cycleList.insertLast('Apollo');
-  cycleList.insertLast('Boomer');
-  cycleList.insertLast('Helo');
-  cycleList.insertLast('Husker');
-  cycleList.insertLast('Starbuck');
-  cycleList.cycle(cycleList.find('Starbuck'));
-  console.log(cycleList.cycleList());
-}
-
-main2();
+// main2();
 
