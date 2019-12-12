@@ -10,6 +10,17 @@ class DoublyLinkedList {
   constructor() {
     this.head = null;
   }
+  findLast() {
+    let currNode = this.head;
+    if (currNode === null) {
+      return 'empty list';
+    } else {
+      while (currNode.next !== null) {
+        currNode = currNode.next;
+      }
+      return currNode;
+    }
+  }
 
   display() {
     let currNode = this.head;
@@ -43,6 +54,7 @@ class DoublyLinkedList {
       }
       last.next = new Node(value, null, last);
     }
+    
   }
 
   find(item) {
@@ -63,10 +75,9 @@ class DoublyLinkedList {
 
   insertAfter(value, insertion) {
     let currNode = this.find(insertion);
-    let newNode = new Node(value, currNode.next, currNode.prev);
+    let newNode = new Node(value, currNode.next, currNode);
     currNode.next.prev = newNode;
     currNode.next = newNode; 
-    console.log(currNode);
   }
 
   insertBefore(value, insertion) {
@@ -109,9 +120,22 @@ class DoublyLinkedList {
       console.log('Item not found');
       return;
     }
-    console.log(currNode);
     currNode.prev.next = currNode.next;
     currNode.next.prev = currNode.prev;
+  }
+
+  reverse(node){
+    let prevNode = node.prev;
+    let nextNode = node.next;
+    if (node.next !== null) {
+      this.reverse(nextNode);
+      node.next = prevNode;
+      node.prev = nextNode;
+    } else {
+      node.next = prevNode;
+      node.prev = null;
+      this.head = node;
+    }
   }
 }
 
@@ -123,9 +147,11 @@ function main() {
   DLL.insertAfter('Caprica', 'Aquaria');
   DLL.insertAfter('Gemenon', 'Caprica');
   DLL.insertAt('Tauron', 3);
-  // DLL.remove('Caprica');
   DLL.display();
-  // console.log(DLL);
+  // DLL.remove('Caprica');
+  DLL.reverse(DLL.head);
+  DLL.display();
+  console.log(DLL.find('Aquaria'));
 }
 
 main();

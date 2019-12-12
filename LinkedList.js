@@ -320,8 +320,8 @@ function main() {
   // WhatDoesThisProgramDo(SLL);
   // SLL.display();
   // SLL.reverse(SLL.head);
-  SLL.itReverse();
-  SLL.display();
+  // SLL.itReverse();
+  // SLL.display();
   // console.log(SLL.thirdFromEnd());
   // console.log(SLL.middleOfList());
   // console.log(SLL.cycleList());
