@@ -137,22 +137,57 @@ class LinkedList {
     }
   }
   reverse(node){
-    let tempHead = node;
+    // let tempHead = node;
     if(node.next !== null){
       // console.log('before reverse', node.next.value);
       this.reverse(node.next);
       node.next.next = node;
-      console.log(`set node ${node.value}.next.next to ${node.value}`);
-      console.log(`${node.next.value}.next is now ${node.next.next.value}`);
-      console.log(`${node.value}.next is ${node.next.value}`);
+      // console.log(`set node ${node.value}.next.next to ${node.value}`);
+      // console.log(`${node.next.value}.next is now ${node.next.next.value}`);
+      // console.log(`${node.value}.next is ${node.next.value}`);
       node.next = null;
-      console.log(`${node.value}.next is ${node.next}`)
+      // console.log(`${node.value}.next is ${node.next}`)
+      //this else block is the base case
     } else {
       // console.log('node', node.value, 'next is null');
       // console.log(`head is ${tempHead.value}, line 47`);
-      return tempHead;
+      // this.head = tempHead;
+      this.head = node;
     }
   }
+
+  /*
+  a > b > c > null 
+  reverse(a) [swap a and b]
+    reverse(b) [swap b and c]
+      reverse(c) [swap c and null] > hits the base case-- set the head of the list to c, our last node
+    [complete reverse(b): b.next.next (this is c.next) = b]
+
+                                    ----
+                                   v   |
+    [at this state our list is a > b > c]
+    [node.next = null]
+                                    ----
+                                   v   |
+    [at this state our list is a > b   c]
+                                   |
+                                   v
+                                  null
+
+  [complete reverse(a): a.next.next (this is b.next) = a]
+                                 c
+                                 v
+  [at this state our list is a > b > a]
+
+  [node.next = null]
+                                 c
+                                 v
+  [at this state our list is     b > a]
+                                     |
+                                     v
+                                    null
+
+  */
 
 }
 
@@ -187,6 +222,7 @@ function main() {
   // WhatDoesThisProgramDo(SLL);
   // SLL.display();
   SLL.reverse(SLL.head);
+  SLL.display();
 }
 
 function WhatDoesThisProgramDo(lst) {
